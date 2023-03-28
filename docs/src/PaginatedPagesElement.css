@@ -1,0 +1,34 @@
+paginated-pages::part(pages) {
+  --default-color: #666;
+  --active-color: hsl(192, 100%, 50%);
+  --disabled-color: #ccc;
+  display: flex;
+  gap: 0.5em;
+  user-select: none;
+}
+
+paginated-pages::part(page),
+paginated-pages::part(dots) {
+  width: 2.5em;
+  height: 2.5em;
+  display: grid;
+  place-items: center;
+  color: var(--default-color);
+  text-decoration: none;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  outline-color: var(--active-color);
+}
+
+paginated-pages::part(page):where(:active, :focus, :hover) {
+  color: var(--active-color);
+}
+
+paginated-pages::part(active) {
+  color: white;
+  background-color: var(--active-color);
+}
+
+paginated-pages::part(disabled) {
+  color: var(--disabled-color);
+}

@@ -1,0 +1,79 @@
+/* docs/src/demo.css */
+* {
+  margin: 0;
+  box-sizing: border-box;
+  outline-color: hsl(192, 100%, 50%);
+}
+html {
+  font-family: "Cutive Mono", sans-serif;
+  line-height: 1.4;
+}
+html,
+body,
+main {
+  height: 100%;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4em;
+}
+label {
+  display: inline-grid;
+  grid-template-rows: max-content max-content;
+}
+label > span {
+  font-size: 50%;
+}
+input {
+  font: inherit;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid #bbb;
+  background: transparent;
+}
+input:is([name="currentPage"], [name="pageCount"], [name="maxVisibleCount"]) {
+  font-size: 75%;
+  text-align: right;
+  width: 6em;
+}
+input:is([name="currentPage"]) {
+  color: #999;
+}
+:any-link {
+  color: hsl(192, 100%, 50%);
+}
+
+/* docs/src/PaginatedPagesElement.css */
+paginated-pages::part(pages) {
+  --default-color: #666;
+  --active-color: hsl(192, 100%, 50%);
+  --disabled-color: #ccc;
+  display: flex;
+  gap: 0.5em;
+  user-select: none;
+}
+paginated-pages::part(page),
+paginated-pages::part(dots) {
+  width: 2.5em;
+  height: 2.5em;
+  display: grid;
+  place-items: center;
+  color: var(--default-color);
+  text-decoration: none;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  outline-color: var(--active-color);
+}
+paginated-pages::part(page):where(:active, :focus, :hover) {
+  color: var(--active-color);
+}
+paginated-pages::part(active) {
+  color: white;
+  background-color: var(--active-color);
+}
+paginated-pages::part(disabled) {
+  color: var(--disabled-color);
+}
